@@ -16,19 +16,20 @@
 					 </div>
 				</div>		
 				
-				<div class="col-4 d-flex justify-content-start"> 
+				
+
+				<div class="col-4 d-flex justify-content-start">
 					<div class="form" id="form">
 						<div class="task-hold input-group" id="task-hold">
 							<form action="{{route('empleados')}}" method="GET" class="d-flex">
 								<input type="text" class="form-control" name="nombre" placeholder="Nombre" aria-label="Ejemplo" aria-describedby="button-addon1">
 								<button type="submit" class="btn btn-success">Buscar</button>
 							</form>
-							
-							
 						</div>
 					</div>
 				</div>
-				
+
+
 				<div class="col-4">
 					<div class="input-group">
 						<form action="{{ route('empleados.filtrar') }}" method="GET" class="form-group d-flex align-items-center" style="margin: 0;">
@@ -51,34 +52,49 @@
 					<table class="table table-hover my-0">
 						<thead>
 							<tr>
-								<th class="d-none d-xl-table-cell">Id Empleado</th>
-								<th class="d-none d-xl-table-cell">Nombre</th>
+								<th class="d-none d-md-table-cell">Id_Emp</th>
+								<th class="d-none d-md-table-cell">Nombre</th>
+								<th class="d-none d-md-table-cell">Apellidos</th>
+								<th class="d-none d-md-table-cell">Teléfono</th>
 								<th class="d-none d-md-table-cell">Puesto</th>
 								<th class="d-none d-md-table-cell">Fecha de ingreso</th>
-								<th class="d-none d-md-table-cell">Estatus</th>
+ 								<th class="d-none d-md-table-cell">Estatus</th>
 								<th class="d-none d-md-table-cell">Acción</th>
 							</tr>
 						</thead>
 						<tbody>
 						@foreach($empleados as $empleado)
 							<tr >
-								<td  class="d-none d-xl-table-cell" @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; color: red" @endif> {{$empleado->id_empleado}}</td>
-								<td class="d-none d-md-table-cell"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; color: red" @endif>{{$empleado->nombre." ".$empleado->apellido_pat." ".$empleado->apellido_mat }}</td>
+								<td  class="d-none d-md-table-cell" @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; color: red" @endif> {{$empleado->id_empleado}}</td>
+								<td class="d-none d-md-table-cell"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; color: red" @endif>{{$empleado->nombre}}</td>
+
+								<td class="d-none d-md-table-cell"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; color: red" @endif>{{$empleado->apellido_pat." ".$empleado->apellido_mat}}</td>
+
+								
+								<td class="d-none d-md-table-cell"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; color: red" @endif>{{$empleado->telefono}}</td>
+
+
 								<td class="d-none d-md-table-cell"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; color: red" @endif> {{$empleado->puesto}}</td>
 								<td class="d-none d-md-table-cell"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; color: red" @endif> {{$empleado->fecha_ingreso}}</td>
+ 
+
+
 								<td><span id="btnBadge" class="badge {{ $empleado->estado == 'Inactivo' ? 'bg-danger' : 'bg-success' }}"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through;" @endif>{{$empleado->estado}}</span></td>
 								<td>
 
-								<a href="{{ route('empleado.editar', $empleado->id_empleado) }}" class="btn btn-success">Editar</a>
+								<a href="{{ route('empleado.editar', $empleado->id_empleado) }}" class="btn btn-success"  @if($empleado->estado == 'Inactivo') style="display: none;" @endif>Editar</a>
 
-
-									<!-- <a href="#edit{{$empleado->id_empleado}}" data-bs-toggle="modal" class="btn btn-success">  Editar</a>   -->									 
-									
-									<form  onsubmit ="return confirm('¿Desea eliminar al empleado?')" action="{{ route('empleado.actualizarEstado', $empleado->id_empleado) }}" method="POST" style="display:inline;">
+								<form onsubmit="return confirm('¿Desea reactivar al empleado?')" action="{{ route('empleado.reactivarEmp', $empleado->id_empleado) }}" method="POST" style="display:inline;" @if($empleado->estado == 'Activo') style="display: none;" @endif>
                                         @csrf
                                         @method('PATCH')
-                                        <button type="submit" class="btn btn-danger" @if($empleado->estado == 'Inactivo') style="display: none;" @endif>Eliminar</button>
-                                    </form>
+                                        <button type="submit" class="btn btn-success"@if($empleado->estado == 'Activo') style="display: none;" @endif    >Reactivar</button>
+                                </form>
+									 
+								<form onsubmit ="return confirm('¿Desea eliminar al empleado?')" action="{{ route('empleado.actualizarEstado', $empleado->id_empleado) }}" method="POST" style="display:inline;">
+									@csrf
+									@method('PATCH')
+									<button type="submit" class="btn btn-danger" @if($empleado->estado == 'Inactivo') style="display: none;" @endif>Eliminar</button>
+								</form>
 
 
 									
@@ -100,11 +116,18 @@
 <script>
 	let btnBadge = document.getElementById('btnBadge');
 
+ 
 	if(btnBadge == 'Inactivo'){
 		btnBadge.classList.toggle("bg-danger");
-	}
+ 	}
+
+
+
 
 </script>
+
+ 
+ 
  
 
 

@@ -39,6 +39,7 @@ Route::get('/empleados', [controllerEmpleados::class, 'index'])->name('empleados
 
 
 Route::get('/empleados', [controllerEmpleados::class, 'getEmpleados'])->name('empleados');
+
 Route::get('/empleados/filtrar', [controllerEmpleados::class, 'filtrarEmpleados'])->name('empleados.filtrar');
 Route::patch('/update/{id_empleado}', [controllerEmpleados::class, 'update'])->name('empleado.update');
 
@@ -47,6 +48,9 @@ Route::get('/', 'controllerEmpleados@getEmpleados');
 Route::post('/save', 'controllerEmpleados@save');
 
 Route::patch('/empleados/{id_empleado}/status', [controllerEmpleados::class, 'actualizarEstado'])->name('empleado.actualizarEstado');
+ 
+Route::patch('/empleados/{id_empleado}/reactivar', [controllerEmpleados::class, 'reactivarEmp'])->name('empleado.reactivarEmp');
+
 
 Route::get('/empleados/{id_empleado}/editar', [controllerEmpleados::class, 'edit'])->name('empleado.editar');
 Route::patch('/empleados/{id_empleado}', [controllerEmpleados::class, 'update'])->name('empleado.update');
