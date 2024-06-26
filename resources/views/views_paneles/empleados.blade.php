@@ -19,28 +19,28 @@
 				<div class="col-4 d-flex justify-content-start"> 
 					<div class="form" id="form">
 						<div class="task-hold input-group" id="task-hold">
-							<input type="text" class="form-control" placeholder="Nombre" aria-label="Example text with button addon" aria-describedby="button-addon1">
-							<a href="#" class="btn btn-success stretched-link">Buscar
-							</a>			 
+							<form action="{{route('empleados')}}" method="GET" class="d-flex">
+								<input type="text" class="form-control" name="nombre" placeholder="Nombre" aria-label="Ejemplo" aria-describedby="button-addon1">
+								<button type="submit" class="btn btn-success">Buscar</button>
+							</form>
+							
+							
 						</div>
 					</div>
 				</div>
 				
 				<div class="col-4">
 					<div class="input-group">
-						<select class="form-select" id="inputSelectEstatus">
-							<option selected disabled>Seleccionar estatus</option>
-							<option value="activo">Activo</option>
-							<option value="inactivo">Inactivo</option>
-						</select>
-						<a href="#" class="btn btn-primary stretched-link">Filtrar</a>	
+						<form action="{{ route('empleados.filtrar') }}" method="GET" class="form-group d-flex align-items-center" style="margin: 0;">
+							@csrf
+							<select name="estado" class="form-select me-2" id="estatuSelect">
+								<option value="activo" {{ request('estado') == 'activo' ? 'selected' : '' }}>Activo</option>
+								<option value="inactivo" {{ request('estado') == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
+							</select>
+							<button type="submit" class="btn btn-primary">Filtrar</button>
+						</form>
 					</div>
-				</div>			
-
-	 			
-
-				
-	
+           		</div>			
  
 		</div>
 
@@ -69,59 +69,20 @@
 								<td><span id="btnBadge" class="badge {{ $empleado->estado == 'Inactivo' ? 'bg-danger' : 'bg-success' }}"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through;" @endif>{{$empleado->estado}}</span></td>
 								<td>
 
-									<!-- <a href="{{ route('editar_emp') }}" class="btn btn-primary stretched-link">Editar empleado
-									</a> -->
+								<a href="{{ route('empleado.editar', $empleado->id_empleado) }}" class="btn btn-success">Editar</a>
 
-									<a href="#edit{{$empleado->id_empleado}}" data-bs-toggle="modal" class="btn btn-success">  Editar</a>  
+
+									<!-- <a href="#edit{{$empleado->id_empleado}}" data-bs-toggle="modal" class="btn btn-success">  Editar</a>   -->									 
 									
-									<form action="{{ route('empleado.actualizarEstado', $empleado->id_empleado) }}" method="POST" style="display:inline;">
+									<form  onsubmit ="return confirm('¿Desea eliminar al empleado?')" action="{{ route('empleado.actualizarEstado', $empleado->id_empleado) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('PATCH')
                                         <button type="submit" class="btn btn-danger" @if($empleado->estado == 'Inactivo') style="display: none;" @endif>Eliminar</button>
                                     </form>
-									
-									<div class="modal fade" id="edit{{$empleado->id_empleado}}" tabindex="-1" aria-labelledby="editModalLabel{{$empleado->id_empleado}}" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<!-- <h5 class="modal-title" id="editModalLabel{{$empleado->id_empleado}}">Editar Empleado</h5> -->
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-													
-					<div class="modal-body">
-						{!! Form::model($empleados, [ 'method' => 'patch','route' => ['empleado.update', $empleado->id_empleado]]) !!}
-							@csrf
-							<div class="row">
-								<h3 class="h3 text-primary mb-3">Editar Información de Empleado</h3>
-							</div>
-							<div class="row">
-								<div class="col-md-12 mb-3">
-									{!! Form::label('nombre', 'Nombre') !!}
-										
-									{!! Form::text('nombre',$empleado->nombre , ['class' => 'form-control'])!!}
-								</div>
-
-								<div class="col-md-12 mb-3">
-									{!! Form::label('apellido_pat', 'Apellido Paterno') !!}
-										
-									{!! Form::text('apellido_pat',$empleado->apellido_pat , ['class' => 'form-control'])!!}
-								</div>	
-
-							</div>
-							<div class="row">
-								{{Form::button('Actualizar', ['class' => 'btn btn-success', 'type' => 'submit'])}}
-							</div> 
-						{!! Form::close() !!}
-					</div>
-        </div>
-    </div>
-</div>
-									
 
 
 									
-								
-								
+									
 								</td>
 							</tr>
 						@endforeach
@@ -142,9 +103,11 @@
 	if(btnBadge == 'Inactivo'){
 		btnBadge.classList.toggle("bg-danger");
 	}
-	
+
 </script>
  
+
+
 @endsection
 
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class modelEmpleados extends Model
 {
     use HasFactory;
-
+    //fillable es para editar
     protected $fillable = ['nombre', 'apellido_pat'];   
     protected $primaryKey = 'id_empleado';
 

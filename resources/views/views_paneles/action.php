@@ -1,5 +1,4 @@
 <!-- Esto debe ser el modal de edit, las variables de ben estar definidas para que fincione -->
-
 <div class="modal fade" id="edit{{$empleado->id_empleado}}" tabindex="-1" aria-labelledby="editModalLabel{{$empleado->id_empleado}}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -36,3 +35,4 @@
         </div>
     </div>
 </div>
+											

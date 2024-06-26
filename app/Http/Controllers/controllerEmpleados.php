@@ -15,33 +15,43 @@ class controllerEmpleados extends Controller
         return view ('views_paneles.empleados');
     }
 
-    public function getEmpleados(){
-        $empleados = modelEmpleados::all();
+    // public function index(Request $request){
+    //     $query = modelEmpleados::query();
+
+    //     if ($request->has('nombre')) {
+    //         $query->where('nombre', 'LIKE', '%' . $request->input('nombre') . '%');
+    //     }
+
+    //     $empleados = $query->get();
+    //     return view('views_paneles.empleados')->with('empleados', $empleados);
+    // }
+
+
+
+
+    public function getEmpleados(Request $request){
+        $estado=$request->input('estado','activo');     
+        $empleados = modelEmpleados::where('estado',$estado)->get();
         return view('views_paneles.empleados')->with('empleados', $empleados);
     }
+
+    public function filtrarEmpleados(Request $request){
+        $estado = $request->input('estado', 'activo');
+        return $this->getEmpleados($request);
+    }
+
 
     public function actualizarEstado($id_empleado)
     {
         $empleado = modelEmpleados::find($id_empleado);
         $empleado->estado = 'Inactivo';
         $empleado->save();
-
+        
         return redirect()->route('empleados')->with('success', 'Empleado actualizado correctamente.');
     }
 
-    // public function indexEdit(){
-    //     return view ('views_paneles.editar_emp');
-    // }
 
-    public function getEmpleadosEdit(){
-        $modelEmpleados = modelEmpleados::all();
-        
-        return view('views_paneles.editar_emp', ['modelEmpleados',$modelEmpleados]);
-    }
-
-    
-
-    public function save(Request $request){
+     public function save(Request $request){
 
         $validado = $request->validate([
             'nombre' => 'required|string|max:255',
@@ -74,23 +84,27 @@ class controllerEmpleados extends Controller
         
         
     }
-    
-    public function update(Request $request, $id_empleado){
+
+
+    public function edit($id_empleado){
         $empleado = modelEmpleados::find($id_empleado);
-        $input = $request->all();
-        $empleado->fill($input)->save();
-
-        return redirect('/');
-     }
-
-
-
-
-
-
-
-
-
-
-
+        return view('views_paneles.editar_emp', compact('empleado'));
+    }    
+     
+    public function update(Request $request, $id_empleado)
+    {
+        $empleado = modelEmpleados::find($id_empleado);
+        
+        $validado = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido_pat' => 'required|string|max:255',
+        ]);
+    
+        $empleado->nombre = $request->input('nombre');
+        $empleado->apellido_pat = $request->input('apellido_pat');
+        $empleado->save();
+    
+        return redirect()->route('empleados')->with('success', 'Empleado actualizado correctamente.');
+    }
+ 
 }
