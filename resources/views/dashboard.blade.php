@@ -107,7 +107,9 @@
 										<div class="text-center">
 											<h1 class="light text-white">Empleados <span class="number">10</span></h1>
 											<div class="info-box d-flex align-items-center justify-content-center mt-2">
-												Más información <i class="fas fa-arrow-right ml-2"></i>
+												<a class="btn light text-white"  href="{{ route('empleados') }}">
+													Más información <i class="fas fa-arrow-right ml-2"></i>
+												</a>
 											</div>
 										</div>
 									</div>
@@ -115,7 +117,9 @@
 										<div class="text-center">
 											<h1 class="light text-white">Asistencia <span class="number">10</span></h1>
 											<div class="info-box d-flex align-items-center justify-content-center mt-2">
-												Más información <i class="fas fa-arrow-right ml-2"></i>
+												<a class="btn light text-white"  href="{{ route('asistencias') }}">
+													Más información <i class="fas fa-arrow-right ml-2"></i>
+												</a>
 											</div>
 										</div>
 									</div>
@@ -123,7 +127,9 @@
 										<div class="text-center">
 											<h1 class="light text-white">Vacaciones <span class="number">0</span></h1>
 											<div class="info-box d-flex align-items-center justify-content-center mt-2">
-												Más información <i class="fas fa-arrow-right ml-2"></i>
+												<a class="btn light text-white"  href="{{ route('vacaciones') }}">
+													Más información <i class="fas fa-arrow-right ml-2"></i>
+												</a>											
 											</div>
 										</div>
 									</div>
