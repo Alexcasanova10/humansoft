@@ -54,7 +54,9 @@
 			margin-left: 5px;
 		}
 	</style>
-	
+	@section('titulo')
+		Dashboard
+	@endsection
 	<main class="content">
 		<div class="container-fluid p-0">
 

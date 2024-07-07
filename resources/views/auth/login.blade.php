@@ -4,16 +4,21 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    
-    
-    <div class="card shadow p-4">
+        
+    <div class="p-4">
+
+    <!-- 
+    email
+    contraseña
+    remember me //forget password
+    login 
+
+    ¿No tienes cuenta? Regístrate
+    -->
         <form method="POST" action="{{ route('login') }}">
             @csrf
             
-            <img class="mb-4 img-fluid" src="{{ asset('multimedia/logoGral.jpg') }}" alt="logoGral" width="350px" height="60">
-            
-   
-    
+            <img class="mb-4 img-fluid" src="{{ asset('multimedia/logoGral.jpg') }}" alt="logoGral" width="350px" height="60">                
             <!-- Email Address -->
             <div class="mt-4">
                 <x-input-label class="input-group mb-2" for="email" :value="__('Email')" />
@@ -45,7 +50,7 @@
                 <div class="d-flex justify-content-between ">
                     <button class="btn btn-sm btn-primary">{{ __('Iniciar Sesión') }}</button>
                     @if (Route::has('password.request'))
-                        <a class="btn ms-2  btn-sm btn-dark" role="button" href="{{ route('password.request') }}">
+                        <a class="btn ms-2  btn-sm btn-info" role="button" href="{{ route('password.request') }}">
                             {{ __('¿Olvidaste tu contraseña?') }}
                         </a>
                         @endif
@@ -58,6 +63,6 @@
                     </a>
             </div>
         </form>
-    </div>  
+    </div>
 
 </x-guest-layout>

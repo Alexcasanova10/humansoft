@@ -1,0 +1,56 @@
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #D99748; /* Color principal */
+    --bs-btn-border-color: #D99748;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #A87530; /* Naranja más oscuro para el hover */
+    --bs-btn-hover-border-color: #A87530;
+    --bs-btn-focus-shadow-rgb: 217, 151, 72; /* Color de sombra enfocado */
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #A87530;
+    --bs-btn-active-border-color: #A87530;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #D99748;
+    --bs-btn-disabled-border-color: #D99748;
+  }
+
+  
+    
+
+  .btn-info {
+    --bs-btn-color: #fff; /* Cambié esto a blanco para que el texto sea visible en azul oscuro */
+    --bs-btn-bg: #034C8C; /* Color principal */
+    --bs-btn-border-color: #034C8C;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #023768; /* Azul más oscuro para el hover */
+    --bs-btn-hover-border-color: #023768;
+    --bs-btn-focus-shadow-rgb: 3, 76, 140; /* Color de sombra enfocado */
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #023768;
+    --bs-btn-active-border-color: #023768;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff; /* Cambié esto a blanco para que el texto sea visible en azul oscuro */
+    --bs-btn-disabled-bg: #034C8C;
+    --bs-btn-disabled-border-color: #034C8C;
+  }
+  .text-primary {
+    --bs-text-opacity: 1;
+    color: rgba(217, 151, 72, var(--bs-text-opacity)) !important;
+  }
+
+  .bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: rgba(217, 151, 72, var(--bs-bg-opacity)) !important; /* Color D99748 */
+  }
+  
+  .bg-danger {
+    --bs-bg-opacity: 1;
+    background-color: rgba(191, 90, 31, var(--bs-bg-opacity)) !important; /* Color BF5A1F */
+  }
+  
+  .bg-warning {
+    --bs-bg-opacity: 1;
+    background-color: rgba(217, 78, 65, var(--bs-bg-opacity)) !important; /* Color D94E41 */
+  }
+  

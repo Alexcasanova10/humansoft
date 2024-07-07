@@ -2,13 +2,14 @@
 <title>Editar Empleados</title>
 
 @section('contenido_gral')
-
+@section('titulo')
+        Editar Empleados
+	@endsection
 <main class="content">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
-					<h2>Editar Empleado</h2>
-					
+ 					
 					<form action="{{ route('empleado.update', $empleado->id_empleado) }}" method="POST">
 						@csrf
 						@method('PATCH')

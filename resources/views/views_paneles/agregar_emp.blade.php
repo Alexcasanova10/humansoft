@@ -2,11 +2,12 @@
 <title>Añadir Empleados</title>
 
 @section('contenido_gral')
-
+@section('titulo')
+        Agregar Empleado
+	@endsection
             <main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3"><strong>Agregar Empleados</strong></h1>
-
+ 
 					<div class="row">
 						<div class="col-12 col-xxl-9 d-flex">
 

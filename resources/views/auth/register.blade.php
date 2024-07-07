@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Nuevo Usuario</title>
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ asset('multimedia/logoIco.ico') }}" />
 
 </head>
 <body>

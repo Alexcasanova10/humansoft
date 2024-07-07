@@ -2,11 +2,12 @@
 <title>Nóminas</title>
 
 @section('contenido_gral')
+    @section('titulo')
+        Nómina de Empleados
+	@endsection
 <main class="content   ">
         <div class="container-fluid">
-            <div class="row mb-5">
-                <h1 class="h3"><strong>Nómina de empleados</strong></h1>
-            </div>
+ 
 
             <div class="row">
                 <div class="col-12 d-flex">
@@ -43,7 +44,7 @@
                                     <span class="input-group-text">0.00</span>
                                 </div>
                                 <center>
-                                    <button type="submit" class="btn btn-outline-primary btn-lg">Guardar</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
                                 </center>
                             </form>
                         </div>

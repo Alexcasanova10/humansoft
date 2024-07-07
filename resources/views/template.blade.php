@@ -17,6 +17,8 @@
 	<title></title>
  
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/propioCss.css')}}">
+	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -94,7 +96,10 @@
 				<a class="sidebar-toggle js-sidebar-toggle">
                     <i class="hamburger align-self-center"></i>
                 </a>
-			<h1>Bienvenido a HumanSoft!</h1>
+
+				<h1 class="h1">
+					@yield('titulo')
+				</h1>
            
             <div class="navbar-collapse collapse">
                         <ul class="navbar-nav navbar-align">
@@ -163,7 +168,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
+                            <!-- <li class="nav-item dropdown">
                                 <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
                                     <div class="position-relative">
                                         <i class="align-middle" data-feather="message-square"></i>
@@ -229,7 +234,7 @@
                                         <a href="#" class="text-muted">Show all messages</a>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                             <li class="nav-item dropdown">
                                 <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                     <i class="align-middle" data-feather="settings"></i>
@@ -239,9 +244,9 @@
 								<i class="fa-solid fa-user"></i> <span class="text-dark">Hola! User  </span>
                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
+                                    <a class="dropdown-item" href="{{ route('perfil') }}"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
                                      <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Configuración</a>
+                                    <a class="dropdown-item" href="{{ route('configuracion') }}"><i class="align-middle me-1" data-feather="settings"></i> Configuración</a>
                                     <div class="dropdown-divider"></div>
 									<form method="POST" action="{{ route('logout') }}">
 											@csrf
