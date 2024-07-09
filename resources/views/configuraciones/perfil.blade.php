@@ -1,10 +1,12 @@
 @extends('template')
-<title>Perfil</title>
+<title>Perfil de Usuario</title>
 
 @section('contenido_gral')
 @section('titulo')
         Editar Perfil
-	@endsection
+@endsection
+
+
 
 
 @endsection

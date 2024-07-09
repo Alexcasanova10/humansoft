@@ -20,12 +20,18 @@
     <link rel="stylesheet" href="{{asset('assets/css/propioCss.css')}}">
 	
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<style>
+		#owo, .side-nav, .sidebar-itemv, .sidebar-link{
+			background-color: #D99748 !important;
+		}
+	</style>
 </head>
 
 <body>
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
-			<div class="sidebar-content js-simplebar">
+			<div id="owo" class="sidebar-content js-simplebar">
 			    <a class="sidebar-brand" href="index.html">
 					<img class="mb-4 img-fluid" src="{{ asset('multimedia/logoGral.jpg') }}" alt="logoGral" width="350px" height="60">
 

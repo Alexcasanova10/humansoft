@@ -1181,6 +1181,7 @@
                     </div>
                 </div>
             </div>
+            <a href="{{ route('justi_Asista') }}">vista justificar falta></a>
 
 
         </div>

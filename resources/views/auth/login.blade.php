@@ -18,7 +18,9 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             
-            <img class="mb-4 img-fluid" src="{{ asset('multimedia/logoGral.jpg') }}" alt="logoGral" width="350px" height="60">                
+            <img class="img-fluid" src="{{ asset('multimedia/logoGral.jpg') }}" alt="logoGral" width="350px" height="60">   
+            
+      
             <!-- Email Address -->
             <div class="mt-4">
                 <x-input-label class="input-group mb-2" for="email" :value="__('Email')" />
@@ -37,30 +39,37 @@
     
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
-    
+
+            <div class=" mt-4 p-1">
+                <button class="btn form-control btn-primary">{{ __('Iniciar Sesión') }}</button>
+            </div>    
+            
             <!-- Remember Me -->
-            <div class="block mt-4">
+            <div class="block mt-4 d-flex justify-content-between">
+
                 <label for="remember_me" class="d-flex">
                     <input id="remember_me" type="checkbox" class="" name="remember">
                     <span class="ms-2">{{ __('Recordar Usuario') }}</span>
                 </label>
+
+                @if (Route::has('password.request'))
+                    <a class="link-primary" role="button" href="{{ route('password.request') }}">
+                        {{ __('¿Olvidaste tu contraseña?') }}
+                    </a>
+                @endif
+
+
             </div>
     
-            <div class="container mt-2  p-1">
-                <div class="d-flex justify-content-between ">
-                    <button class="btn btn-sm btn-primary">{{ __('Iniciar Sesión') }}</button>
-                    @if (Route::has('password.request'))
-                        <a class="btn ms-2  btn-sm btn-info" role="button" href="{{ route('password.request') }}">
-                            {{ __('¿Olvidaste tu contraseña?') }}
-                        </a>
-                        @endif
-                </div>
-            </div>
+
             
             <div class="mt-4">
-                    <a class="link-danger" href="{{ route('register') }}">
-                            {{ __('Registrarse') }}
-                    </a>
+                    <p class="text-center fs-6">
+                        Crear nueva cuenta: 
+                        <a class="link-danger" href="{{ route('register') }}">
+                                {{ __('Registrarse') }}
+                        </a>
+                    </p>
             </div>
         </form>
     </div>

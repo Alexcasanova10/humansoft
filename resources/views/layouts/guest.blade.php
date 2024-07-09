@@ -14,7 +14,7 @@
         <link href="{{ asset('bootstrap/stylesHS/cssPropio.css') }}" rel="stylesheet">
         <style>
         #bgBrick {
-            background-image: url('{{ asset('multimedia/fondoAI.jpeg') }}');
+            background-image: url('{{ asset('multimedia/paredBricks.jpg') }}');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -22,19 +22,17 @@
         .row {
             margin: 0;
         }
-    </style>
-        <!-- Scripts -->
-     </head>
+        </style>
+      </head>
      <div>
         <div class="row">
             <div class="col-md-6 d-flex align-items-center justify-content-center">
                 {{ $slot }}
             </div>
             <div class="col-md-6" id="bgBrick">
-                
+
             </div>
         </div>
     </div>
 </html>
 
- 

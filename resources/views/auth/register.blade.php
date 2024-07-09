@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Nuevo Usuario</title>
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-	<link rel="shortcut icon" href="{{ asset('multimedia/logoIco.ico') }}" />
+    <link href="{{ asset('bootstrap/stylesHS/cssPropio.css') }}" rel="stylesheet">
 
+	<link rel="shortcut icon" href="{{ asset('multimedia/logoIco.ico') }}" />
+    <style>
+        #bgBrick {
+            background-image: url('{{ asset('multimedia/paredBricks.jpg') }}');
+            background-size: cover;
+            background-position: center;
+        }
+        .row {
+            margin: 0;
+        }
+        </style>
 </head>
-<body>
+<body id="bgBrick">
     <div class="container mt-5">
         <div class="row text-center d-flex align-items-center justify-content-center">
             <div class="col-md-6">
                 <div class="card p-4">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                        <h1 class="h3 text-primary">Registrar Usuario</h1>
                         <!-- Name -->
                         <div class="mt-2">
                             <x-input-label class="input-group mb-2" for="name" :value="__('Nombre')" />

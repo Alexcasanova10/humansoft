@@ -60,6 +60,11 @@ Route::get('/asistencias', function () {
     return view('views_paneles.asistencias');
 })->name('asistencias');
 
+
+Route::get('/justi_Asista', function () {
+    return view('views_paneles.justi_Asista');
+})->name('justi_Asista');
+
 Route::get('/nominas', function () {
     return view('views_paneles.nominas');
 })->name('nominas');
@@ -67,6 +72,13 @@ Route::get('/nominas', function () {
 Route::get('/vacaciones', function () {
     return view('views_paneles.vacaciones');
 })->name('vacaciones');
+
+
+Route::get('/agregar_vacaciones', function () {
+    return view('views_paneles.agregar_vacaciones');
+})->name('agregar_vacaciones');
+
+
 
 Route::get('/agregar_emp', function () {
     return view('views_paneles.agregar_emp');
@@ -84,7 +96,16 @@ Route::get('/configuracion', function () {
 Route::get('/perfil', function () {
     return view('configuraciones.perfil');
 })->name('perfil');
- 
+
+
+
+Route::get('/errorPNT', function () {
+    return view('views_paneles.errorPNT');
+})->name('errorPNT');
+
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
