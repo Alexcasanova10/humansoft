@@ -25,7 +25,8 @@ Route::get('/',function(){
  
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    //antes ruta name era dashboard, si hay error, mover name a dashboard
+})->middleware(['auth', 'verified'])->name('inicio');
 
 
 Route::get('/empleados', function () {
@@ -77,6 +78,10 @@ Route::get('/vacaciones', function () {
 Route::get('/agregar_vacaciones', function () {
     return view('views_paneles.agregar_vacaciones');
 })->name('agregar_vacaciones');
+
+Route::get('/editar_vac', function () {
+    return view('views_paneles.editar_vac');
+})->name('editar_vac');
 
 
 

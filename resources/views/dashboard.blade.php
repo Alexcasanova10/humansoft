@@ -1,5 +1,5 @@
 @extends('template')
-<title>Dashboard HumanSoft</title>
+<title>Inicio HumanSoft</title>
 @section('contenido_gral')
     <!-- poner el to do list, recordatorios del día, y grid de 3 cuadros en row que tiene total de empleados,   -->
 	<style>
@@ -55,13 +55,12 @@
 		}
 	</style>
 	@section('titulo')
-		Dashboard
+		Bienvenido!!
 	@endsection
 	<main class="content">
 		<div class="container-fluid p-0">
 
 			<div class="d-flex align-items-center mb-3 justify-content-between">
-				<h1 class="h3 mb-3"><strong>Lista de Pendientes</strong></h1>
 				<!-- <button class="btn-primary btn" id="btnAgregar" onclick="agregarCard()" >Agregar Pendiente</button> -->
 				
 				<div class="form" id="form">
@@ -78,12 +77,12 @@
 			<div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
  				<div class="col-xl-12 col-xxl-5 d-flex">
 					<div class="w-100">
-						<div class="row">
+						<div class="row ">
 							<div class="col-12">
 								<div class="scrollable-container">
-									<div class="row duties duties-hold" id="card-row">										
-										<!-- Aquí añadir más cards aquí, se agregan con col-4 mb-3-->
-									</div>
+									<div class="row duties duties-hold" id="card-row">
+																				
+ 									</div>
 								</div>
 							</div>
 						</div>

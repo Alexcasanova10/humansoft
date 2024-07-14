@@ -8,7 +8,7 @@
 <main class="content">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-12">
+				<div class="col-12 bg-white p-4">
  					
 					<form action="{{ route('empleado.update', $empleado->id_empleado) }}" method="POST">
 						@csrf

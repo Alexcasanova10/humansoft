@@ -22,16 +22,37 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 	<style>
-		#owo, .side-nav, .sidebar-itemv, .sidebar-link{
+		#sideBarTop, .side-nav, .sidebar-itemv, .sidebar-link{
 			background-color: #D99748 !important;
 		}
+
+		.sidebar-item{
+			font-size: 16px;
+ 		} 
+		.sidebar-link:hover{
+			border-left-color: #D94E41 !important;
+			color: #fff;
+ 		}
+
+		.sidebar-item.active .sidebar-link:hover, .sidebar-item.active>.sidebar-link {
+			background: linear-gradient(90deg, rgba(59, 125, 221, .1), rgba(59, 125, 221, .088) 50%, transparent);
+			border-left-color: #BF5A1F !important; 
+		}
+
+
+
+
+
+
+
+		
 	</style>
 </head>
 
 <body>
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
-			<div id="owo" class="sidebar-content js-simplebar">
+			<div id="sideBarTop" class="sidebar-content js-simplebar">
 			    <a class="sidebar-brand" href="index.html">
 					<img class="mb-4 img-fluid" src="{{ asset('multimedia/logoGral.jpg') }}" alt="logoGral" width="350px" height="60">
 
@@ -43,12 +64,13 @@
                     </li>
 
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="{{ route('dashboard') }}">
-						<i class="fa-solid fa-house"></i><span class="align-middle">Dashboard</span>
+                        <a class="sidebar-link" href="{{ route('inicio') }}">
+							<!-- //antes ruta name era dashboard, si hay error, mover name a dashboard -->
+						<i class="fa-solid fa-house"></i><span class="align-middle">Inicio</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item">"
+                    <li class="sidebar-item">
                         <a class="sidebar-link"  href="{{ route('empleados') }}">
 							<i class="fa-solid fa-user"></i> <span class="align-middle">Empleado</span>
                     	</a>
@@ -247,7 +269,14 @@
                 </a>
 
                                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-								<i class="fa-solid fa-user"></i> <span class="text-dark">Hola! User  </span>
+								<i class="fa-solid fa-user"></i> 
+								<span class="text-dark">
+								Hola! {{ Auth::check() ? Auth::user()->name : 'Usuario' }}
+
+									
+								</span>
+
+
                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a class="dropdown-item" href="{{ route('perfil') }}"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>

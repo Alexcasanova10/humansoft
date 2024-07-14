@@ -19,7 +19,7 @@
 							{!! Form::open(['url' => 'save']) !!}
 							@csrf
 								<div class="row">
-									<h3 class="h3 text-primary mb-3">Información Personal</h3>
+									<h2 class="h2 text-center text-white bg-primary rounded p-2 mb-4">Información Personal</h2>
 								</div>
 								<div class="row">
 									<div class="col-md-12 mb-3">											 
@@ -80,7 +80,7 @@
 								</div>
 								
 								<div class="row">
-									<h3 class="h3 text-primary mb-3">Domicilio</h3>
+									<h2  class="h2 text-center text-white bg-primary rounded p-2 mb-4"">Domicilio</h2>
 								</div>
 
 								<div class="row">
@@ -114,7 +114,7 @@
 								</div>
 
 								<div class="row">
-									<h3 class="h3 text-primary mb-3">Información Laboral</h3>
+									<h2 class="h2 text-center text-white bg-primary rounded p-2 mb-4">Información Laboral</h2>
 								</div>
 
 								<div class="row">
@@ -143,7 +143,7 @@
 								</div>
 
 								<div class="row">
-									<button type="submit" class="btn col-12 btn-primary">Enviar</button>
+									<button type="submit" class="btn col-12 btn-primary">ENVIAR</button>
 
 								</div>
 

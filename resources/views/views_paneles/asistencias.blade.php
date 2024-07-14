@@ -94,11 +94,13 @@
                         <option value="28">2026</option>
                     </select>
                 </div>
-                <div class="col-3 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+                
+                <div class="col-3">
+                    <button type="submit" class="btn mt-4 align-self-center form-control btn-primary">Buscar</button>
                 </div>
             </form>
-            <div class="container mt-5 table-responsive">
+            <div class="container mt-2 table-responsive">
+                <h2 class="h2 text-center text-white bg-primary rounded">MES: </h2>
                 <table class="table table-bordered">
                     <thead>
                         <!--Esta columna hace referencia a los días del mes-->

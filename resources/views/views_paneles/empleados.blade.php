@@ -67,7 +67,7 @@
 						<tbody>
 						@foreach($empleados as $empleado)
 							<tr >
-								<td  class="d-none d-md-table-cell" @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; " @endif> {{$empleado->id_empleado}}</td>
+								<td  class="c" @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; " @endif> {{$empleado->id_empleado}}</td>
 								<td class="d-none d-md-table-cell"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; " @endif>{{$empleado->nombre}}</td>
 
 								<td class="d-none d-md-table-cell"  @if($empleado->estado == 'Inactivo') style="text-decoration: line-through; " @endif>{{$empleado->apellido_pat." ".$empleado->apellido_mat}}</td>
