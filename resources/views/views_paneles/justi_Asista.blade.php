@@ -1,3 +1,4 @@
+
 @extends('template')
 <title>Justificar Asistencias </title>
 

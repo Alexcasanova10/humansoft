@@ -37,7 +37,7 @@
 
                         <!-- Email Address -->
                         <div class="mt-4 mb-4">
-                            <x-input-label for="email" class="input-group mb-2" :value="__('Correo')" />
+                            <x-input-label for="email" class="input-group mb-2" :value="__('Email')" />
                             
  
  

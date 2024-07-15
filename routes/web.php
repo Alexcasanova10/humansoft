@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\controllerEmpleados;
+use App\Http\Controllers\controllerAsistencias;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,14 +59,24 @@ Route::get('/empleados/{id_empleado}/editar', [controllerEmpleados::class, 'edit
 Route::patch('/empleados/{id_empleado}', [controllerEmpleados::class, 'update'])->name('empleado.update');
 
 
+
+
 Route::get('/asistencias', function () {
     return view('views_paneles.asistencias');
 })->name('asistencias');
 
-
 Route::get('/justi_Asista', function () {
     return view('views_paneles.justi_Asista');
 })->name('justi_Asista');
+
+ 
+ 
+Route::get('/asistencias', [controllerAsistencias::class, 'getEmpleadosAsist'])->name('asistencias');
+Route::post('/asistencias', [controllerAsistencias::class, 'storeAsistencias'])->name('store_asistencias');
+ 
+
+
+
 
 Route::get('/nominas', function () {
     return view('views_paneles.nominas');

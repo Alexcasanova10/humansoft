@@ -9,7 +9,7 @@ class modelEmpleados extends Model
 {
     use HasFactory;
     //fillable es para editar
-    protected $fillable = ['nombre', 'apellido_pat', 'apellido_mat', 'telefono', 'estado_civil', 'puesto', 'salario'];   
+    protected $fillable = ['nombre', 'apellido_pat', 'apellido_mat', 'telefono','estado', 'estado_civil', 'puesto', 'salario'];   
     protected $primaryKey = 'id_empleado';
 
 
