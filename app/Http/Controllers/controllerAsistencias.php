@@ -41,4 +41,60 @@ class controllerAsistencias extends Controller
 
         return redirect()->route('asistencias', ['fecha' => $fecha]);
     }
+
+    public function justificarAsistencia(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $id_empleado = $request->input('id');
+        $puesto = $request->input('puesto');
+        $fecha = $request->input('fecha');
+    
+        return view('views_paneles.justi_Asista', compact('nombre', 'id_empleado', 'puesto', 'fecha'));
+    }
+    
+ 
+    public function guardarJustificacion(Request $request)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'id_empleado' => 'required|exists:model_empleados,id_empleado',
+            'fecha_empleado' => 'required|date',
+            'tipo_falta' => 'required|string',
+            'motivo_falta' => 'required|string',
+            'documentacion.*' => 'required|mimes:pdf'
+        ]);
+    
+        // Obtener o crear el registro de asistencia
+        $asistencia = modelAsistencias::updateOrCreate(
+            [
+                'id_empleado' => $request->id_empleado,
+                'fecha' => $request->fecha_empleado,
+            ],
+            [
+                'estado_asistencia' => 'Justificación',
+                'tipo_falta_justi' => $request->tipo_falta,
+                'motivo_justi' => $request->motivo_falta
+            ]
+        );
+    
+        // Verificar si se ha subido algún archivo
+        if ($request->hasFile('documentacion')) {
+            $filePaths = [];
+            foreach ($request->file('documentacion') as $file) {
+                $filePath = $file->store('justificaciones', 'public');
+                $filePaths[] = $filePath;
+            }
+            $asistencia->justificante = json_encode($filePaths);
+            $asistencia->save();
+        }
+    
+        // Redirigir a la vista de asistencias
+        return redirect()->route('asistencias', ['fecha' => $request->fecha_empleado]);
+    }
+    
+    
+
+
+
+    
 }

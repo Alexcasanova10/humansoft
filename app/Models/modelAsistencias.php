@@ -14,7 +14,7 @@ class modelAsistencias extends Model
     protected $primaryKey = 'id_empleado'; // Clave primaria de la tabla
 
     protected $fillable = [
-        'estado_asistencia', 'fecha', 'justificante', 'id_empleado'
+        'estado_asistencia', 'fecha', 'justificante', 'id_empleado', 'tipo_falta_justi', 'motivo_justi'
     ];
 
     public function empleado()

@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('model_vacaciones', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('model_vacaciones', function (Blueprint $table) {
+            $table->timestamps(); // Agrega created_at y updated_at
+
         });
     }
 
@@ -26,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('model_vacaciones');
+        Schema::table('model_vacaciones', function (Blueprint $table) {
+            $table->dropTimestamps(); // Elimina created_at y updated_at
+        });
     }
 };

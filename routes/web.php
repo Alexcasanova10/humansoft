@@ -2,21 +2,13 @@
 
 use App\Http\Controllers\controllerEmpleados;
 use App\Http\Controllers\controllerAsistencias;
+use App\Http\Controllers\controllerVacaciones;
+
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+ 
 // Route::get('/login', function () {
 //     return view('auth.login');
 // });
@@ -74,6 +66,12 @@ Route::get('/justi_Asista', function () {
 Route::get('/asistencias', [controllerAsistencias::class, 'getEmpleadosAsist'])->name('asistencias');
 Route::post('/asistencias', [controllerAsistencias::class, 'storeAsistencias'])->name('store_asistencias');
  
+Route::get('/justi_Asista', [controllerAsistencias::class, 'justificarAsistencia'])->name('justi_Asista');
+Route::post('/guardar_justificacion', [controllerAsistencias::class, 'guardarJustificacion'])->name('guardar_justificacion');
+
+Route::post('/guardar-justificacion', [controllerAsistencias::class, 'guardarJustificacion'])->name('guardar_justificacion');
+
+
 
 
 
@@ -82,9 +80,6 @@ Route::get('/nominas', function () {
     return view('views_paneles.nominas');
 })->name('nominas');
  
-Route::get('/vacaciones', function () {
-    return view('views_paneles.vacaciones');
-})->name('vacaciones');
 
 
 Route::get('/agregar_vacaciones', function () {
@@ -94,6 +89,30 @@ Route::get('/agregar_vacaciones', function () {
 Route::get('/editar_vac', function () {
     return view('views_paneles.editar_vac');
 })->name('editar_vac');
+
+Route::get('/vacaciones', function () {
+    return view('views_paneles.vacaciones');
+})->name('vacaciones');
+
+
+
+Route::get('/vacaciones', [controllerVacaciones::class, 'index'])->name('vacaciones');
+
+Route::get('/agregar_vacaciones', [controllerVacaciones::class, 'showAgregarVacaciones'])->name('agregar_vacaciones');
+
+Route::post('/guardar-vacaciones', [controllerVacaciones::class, 'store'])->name('store_vacaciones');
+
+
+
+
+Route::get('/vacaciones/{id_vacaciones}/editar', [controllerVacaciones::class, 'edit'])->name('editar_vac');
+Route::put('/vacaciones/{id_vacaciones}', [controllerVacaciones::class, 'update'])->name('actualizar_vac');
+Route::delete('/vacaciones/{id_vacaciones}', [controllerVacaciones::class, 'destroy'])->name('eliminar_vac');
+
+
+
+
+
 
 
 

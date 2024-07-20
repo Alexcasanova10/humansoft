@@ -80,19 +80,27 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ route('justi_Asista') }}">vista justificar falta</a>
         </div>
     </main>
-@endsection
 
-<script>
+    <script>
     function handleJustification(select, idEmpleado) {
         if (select.value === 'Justificación') {
             select.closest('tr').classList.add('bg-warning');
             select.options[select.selectedIndex].text = 'Pendiente Justificante';
-            window.location.href = "{{ route('justi_Asista') }}";
+            // Obtener los datos del empleado
+            let id = select.closest('tr').querySelector('td:nth-child(1)').textContent.trim();
+            let nombre = select.closest('tr').querySelector('td:nth-child(2)').textContent.trim();
+            let puesto = select.closest('tr').querySelector('td:nth-child(3)').textContent.trim();
+            let fecha = document.getElementById('fecha').value;
+
+            // Redirigir a la vista de justificación con los parámetros
+            window.location.href = `/justi_Asista?id=${id}&nombre=${nombre}&puesto=${puesto}&fecha=${fecha}`;
         } else {
             select.closest('tr').classList.remove('bg-warning');
         }
     }
 </script>
+
+@endsection
+		
