@@ -3,6 +3,9 @@
 use App\Http\Controllers\controllerEmpleados;
 use App\Http\Controllers\controllerAsistencias;
 use App\Http\Controllers\controllerVacaciones;
+use App\Http\Controllers\controllerNominas;
+use App\Http\Controllers\controllerDashboard;
+use App\Http\Controllers\controllerPendientes;
 
 
 use App\Http\Controllers\ProfileController;
@@ -80,7 +83,13 @@ Route::get('/nominas', function () {
     return view('views_paneles.nominas');
 })->name('nominas');
  
+ 
+Route::get('/nominas', [controllerNominas::class, 'index'])->name('nominas');
+Route::post('/guardar_nomina', [controllerNominas::class, 'guardar'])->name('guardar_nomina');
 
+
+
+ 
 
 Route::get('/agregar_vacaciones', function () {
     return view('views_paneles.agregar_vacaciones');
@@ -140,6 +149,14 @@ Route::get('/errorPNT', function () {
 })->name('errorPNT');
 
 
+/*Route::get('/dashboard', [ControllerEmpleados::class, 'contarEmpleadosActivos'])->name('dashboard');
+Route::get('/dashboard', [controllerAsistencias::class, 'contarAsistencia'])->name('dashboard');*/
+
+Route::get('/dashboard', [controllerDashboard::class, 'mostrarDashboard'])->name('dashboard');
+
+
+
+
 
 
 Route::middleware('auth')->group(function () {
@@ -147,5 +164,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::get('/dashboard', [controllerDashboard::class, 'mostrarDashboard'])->name('dashboard');
+Route::post('/pendientes', [controllerDashboard::class, 'storePendiente'])->name('pendientes.store');
+Route::put('/pendientes/{id}', [controllerDashboard::class, 'updatePendiente'])->name('pendientes.update');
+Route::delete('/pendientes/{id}', [controllerDashboard::class, 'deletePendiente'])->name('pendientes.destroy');
+
+
+
+
+
+
+
 
 require __DIR__.'/auth.php';

@@ -53,7 +53,7 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div id="sideBarTop" class="sidebar-content js-simplebar">
-			    <a class="sidebar-brand" href="{{ route('inicio') }}">
+			    <a class="sidebar-brand" href="{{ route('dashboard') }}">
 					<img class="mb-4 img-fluid" src="{{ asset('multimedia/logoGral.jpg') }}" alt="logoGral" width="350px" height="60">
 
                 </a>
@@ -64,7 +64,7 @@
                     </li>
 
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="{{ route('inicio') }}">
+                        <a class="sidebar-link" href="{{ route('dashboard') }}">
 							<!-- //antes ruta name era dashboard, si hay error, mover name a dashboard -->
 						<i class="fa-solid fa-house"></i><span class="align-middle">Inicio</span>
                         </a>

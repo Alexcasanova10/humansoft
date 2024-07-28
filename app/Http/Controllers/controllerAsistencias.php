@@ -91,6 +91,15 @@ class controllerAsistencias extends Controller
         // Redirigir a la vista de asistencias
         return redirect()->route('asistencias', ['fecha' => $request->fecha_empleado]);
     }
+
+    public function contarAsistencia(){
+        $hoy = Carbon::today()->toDateString();
+        $asistenciaHoy = modelAsistencias::where('estado_asistencia','asistencia')->whereDate('fecha',$hoy)->count();
+        return view('dashboard', compact('asistenciaHoy'));
+
+
+
+    }
     
     
 

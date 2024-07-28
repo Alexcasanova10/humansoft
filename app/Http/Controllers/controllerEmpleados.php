@@ -147,5 +147,21 @@ class controllerEmpleados extends Controller
     
         return redirect()->route('empleados')->with('success', 'Empleado actualizado correctamente.');
     }
+
+
+    public function contarEmpleadosActivos(){
+        $conteoEmpleadosActivos = modelEmpleados::where('estado', 'activo')->count();
+        return view('dashboard', compact('conteoEmpleadosActivos'));
+    }
+
+
+
+
+
+
+
+
+
+
  
 }
