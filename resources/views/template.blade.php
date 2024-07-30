@@ -108,11 +108,14 @@
                         </a>
                     </li>
 
+
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('perfil') }}">
+                        <a class="sidebar-link" href="{{ route('profile.edit') }}">
                         <i class="fa-solid fa-address-card"></i> <span class="align-middle">Perfil</span>
                         </a>
                     </li>
+
+
                 </ul>
 
 		 
@@ -271,7 +274,7 @@
                                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
 								<i class="fa-solid fa-user"></i> 
 								<span class="text-dark">
-								Hola! {{ Auth::check() ? Auth::user()->name : 'Usuario' }}
+								Hola! {{ Auth::check() ? Auth::user()->name : 'UsuarioEjemploFalse' }}
 
 									
 								</span>
@@ -279,7 +282,7 @@
 
                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="{{ route('perfil') }}"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
+                                    <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
                                      <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('configuracion') }}"><i class="align-middle me-1" data-feather="settings"></i> Configuración</a>
                                     <div class="dropdown-divider"></div>

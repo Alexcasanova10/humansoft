@@ -13,16 +13,17 @@ class nominaCreado extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $nomina;
-
+     public $empleado;
+    public $pdf;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($nomina)
+    public function __construct($empleado, $pdf)
     {
-        $this->nomina = $nomina;
+        $this->empleado = $empleado;
+        $this->pdf = $pdf;
     }
 
     /**
@@ -32,10 +33,10 @@ class nominaCreado extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.nomina_created')
-                    ->subject('Nueva Nómina Creada')
-                    ->with([
-                        'nomina' => $this->nomina,
-                    ]);
+        return $this->view('emails.nomina')
+        ->subject('Nómina de Empleado')
+        ->attachData($this->pdf, 'nomina.pdf', [
+            'mime' => 'application/pdf',
+        ]);
     }
 }

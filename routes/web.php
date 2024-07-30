@@ -12,18 +12,21 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
  
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
 
 Route::get('/',function(){
+    return view('auth.login');
+});
+
+Route::get('/login', function () {
     return view('auth.login');
 });
  
 Route::get('/dashboard', function () {
     return view('dashboard');
-    //antes ruta name era dashboard, si hay error, mover name a dashboard
 })->middleware(['auth', 'verified'])->name('inicio');
+
+
+    //antes ruta name era dashboard, si hay error, mover name a dashboard
 
 
 Route::get('/empleados', function () {
@@ -32,7 +35,7 @@ Route::get('/empleados', function () {
 
 
 
-Route::get('/', [controllerEmpleados::class, 'index']);
+ 
 Route::get('/empleados', [controllerEmpleados::class, 'index'])->name('empleados');
 
 
@@ -41,8 +44,7 @@ Route::get('/empleados', [controllerEmpleados::class, 'getEmpleados'])->name('em
 Route::get('/empleados/filtrar', [controllerEmpleados::class, 'filtrarEmpleados'])->name('empleados.filtrar');
 Route::patch('/update/{id_empleado}', [controllerEmpleados::class, 'update'])->name('empleado.update');
 
-Route::get('/', 'controllerEmpleados@index');
-Route::get('/', 'controllerEmpleados@getEmpleados');
+
 Route::post('/save', 'controllerEmpleados@save');
 
 Route::patch('/empleados/{id_empleado}/status', [controllerEmpleados::class, 'actualizarEstado'])->name('empleado.actualizarEstado');
@@ -164,6 +166,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
 
 
 Route::get('/dashboard', [controllerDashboard::class, 'mostrarDashboard'])->name('dashboard');

@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\modelEmpleados;
 use App\Models\modelNominas;
+use App\Mail\nominaCreado;
+use Illuminate\Support\Facades\Mail;
+use PDF;
+
 
 class controllerNominas extends Controller
 {
+    
+ 
     public function index(Request $request)
     {
         $empleados = modelEmpleados::where('estado', 'activo')->get();
@@ -19,7 +25,7 @@ class controllerNominas extends Controller
 
         return view('views_paneles.nominas', compact('empleados', 'empleadoSeleccionado'));
     }
-
+ 
     public function guardar(Request $request)
     {
         $request->validate([
@@ -36,7 +42,7 @@ class controllerNominas extends Controller
             'bonos' => 'nullable|numeric',
         ]);
 
-        modelNominas::create([
+        $nomina = modelNominas::create([
             'id_empleado' => $request->id_empleado,
             'fecha_pago' => $request->fecha_pago,
             'correo' => $request->correo,
@@ -51,6 +57,33 @@ class controllerNominas extends Controller
             'estado_nomina' => 'pendiente',
         ]);
 
-        return redirect()->route('nominas')->with('success', 'Nómina guardada exitosamente.');
+        $empleado = modelEmpleados::find($request->id_empleado);
+        $pdf = PDF::loadView('pdf.nomina', compact('empleado', 'nomina'));
+
+        // Enviar correo electrónico con el PDF adjunto, literal esta linea es la q me dja mandar mail
+       /* Mail::to($request->correo)->send(new nominaCreado($empleado, $pdf->output()));*/
+
+
+
+
+        return $pdf->download('nomina.pdf');
+     }
+
+
+    public function generarNominaPdf(Request $request)
+    {
+        $empleado = Empleado::find($request->input('id_empleado'));
+        $datosNomina = $request->all();
+
+        $pdf = PDF::loadView('pdf.nomina', compact('empleado', 'datosNomina'));
+        return $pdf->download('nomina.pdf');
     }
+
+
+
+
+
+
+
+    
 }
