@@ -54,7 +54,7 @@
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div id="sideBarTop" class="sidebar-content js-simplebar">
 			    <a class="sidebar-brand" href="{{ route('dashboard') }}">
-					<img class="mb-4 img-fluid" src="{{ asset('multimedia/logoGral.jpg') }}" alt="logoGral" width="350px" height="60">
+					<img class="mb-4 img-fluid" id="logoImage" src="{{ asset('storage/multimedia/logoGral.jpg') }}" alt="logoGral" width="350px" height="60">
 
                 </a>
 

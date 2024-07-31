@@ -7,6 +7,7 @@ use App\Http\Controllers\controllerNominas;
 use App\Http\Controllers\controllerDashboard;
 use App\Http\Controllers\controllerPendientes;
 
+use App\Http\Controllers\controllerConfiguracion;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -120,11 +121,16 @@ Route::get('/vacaciones/{id_vacaciones}/editar', [controllerVacaciones::class, '
 Route::put('/vacaciones/{id_vacaciones}', [controllerVacaciones::class, 'update'])->name('actualizar_vac');
 Route::delete('/vacaciones/{id_vacaciones}', [controllerVacaciones::class, 'destroy'])->name('eliminar_vac');
 
+Route::get('/dashboard', [controllerDashboard::class, 'index'])->name('dashboard');
+
+
+Route::post('/configuracion/actualizar', [controllerConfiguracion::class, 'actualizar'])->name('configuracion.actualizar');
+
+Route::post('/configuracion/actualizarNombre', [controllerConfiguracion::class, 'actualizarNombre'])->name('configuracion.actualizarNombre');
 
 
 
-
-
+Route::get('/configuracion/mostrar', [controllerConfiguracion::class, 'mostrar'])->name('configuracion.index');
 
 
 Route::get('/agregar_emp', function () {

@@ -6,9 +6,29 @@ use App\Models\modelEmpleados;
 use App\Models\modelAsistencias;
 use App\Models\modelPendientes;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class controllerDashboard extends Controller
 {
+
+
+    public function index()
+    {
+        // Obtener el valor del nombre del sitio
+        $nombreSitio = DB::table('configuracion')
+            ->where('key', 'nombre_sitio')
+            ->value('value'); // Obtener el valor de la columna 'value'
+
+        // Establecer un nombre predeterminado si no se encuentra ningún valor
+        $nombreSitio = $nombreSitio ?? 'Inicio Materiales El Inge';
+        Log::info('Nombre del sitio: ' . $nombreSitio); // Agrega esta línea para depurar
+
+        // Pasar el nombre del sitio a la vista
+        return view('dashboard', [
+            'nombreSitio' => $nombreSitio
+        ]);    
+    }
+
     public function mostrarDashboard()
     {
         $conteoEmpleadosActivos = modelEmpleados::where('estado', 'activo')->count();

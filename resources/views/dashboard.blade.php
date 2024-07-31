@@ -1,5 +1,8 @@
 @extends('template')
-<title>Inicio HumanSoft</title>
+<!-- <title>Inicio Materiales El Inge</title> -->
+
+<title>Materiales el Inge</title>
+ 
 @section('contenido_gral')
 <style>
     .check {
@@ -54,7 +57,7 @@
     }
 </style>
 @section('titulo')
-    Bienvenido!!
+Bienvenido!!
 @endsection
 <main class="content">
     <div class="container-fluid p-0">
