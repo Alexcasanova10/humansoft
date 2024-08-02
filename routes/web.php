@@ -8,6 +8,7 @@ use App\Http\Controllers\controllerDashboard;
 use App\Http\Controllers\controllerPendientes;
 
 use App\Http\Controllers\controllerConfiguracion;
+ use App\Http\Controllers\CalendarController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -183,10 +184,9 @@ Route::put('/pendientes/{id}', [controllerDashboard::class, 'updatePendiente'])-
 Route::delete('/pendientes/{id}', [controllerDashboard::class, 'deletePendiente'])->name('pendientes.destroy');
 
 
+ Route::get('calendar',[CalendarController::class,'index'])->name('calendar.indexado');
+ Route::post('/calendar/store', [CalendarController::class, 'store'])->name('calendar.store');
 
-
-
-
-
+ Route::post('/calendar/destroy', [CalendarController::class, 'destroy'])->name('calendar.destroy');
 
 require __DIR__.'/auth.php';
