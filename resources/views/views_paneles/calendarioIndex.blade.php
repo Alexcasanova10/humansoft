@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Calendario de Eventos</title>
-  <link rel="shortcut icon" href="{{ asset('multimedia/logoIco.ico') }}" />
+<title>Calendario de Eventos</title>
 
     <style>
         #calendar {
@@ -30,9 +29,14 @@
 </head>
 <body>
     <div class="container">
+
     <h2 class="text-center text-white orange rounded p-2 mb-4">Calendario de Eventos</h2>
     <a class="orange p-2" href="{{ route('dashboard') }}">Volver al Inicio</a>
-      
+    
+
+
+
+
       <div class="card-body">
           <div id='calendar'></div>
       </div>
@@ -81,8 +85,7 @@
 
             const calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                events: @json($events),
-                dateClick: function(info) {
+                 dateClick: function(info) {
                     $('#eventForm').trigger('reset');
                     $('#deleteEventForm').hide();
                     $('#start-date').val(info.dateStr + 'T00:00');

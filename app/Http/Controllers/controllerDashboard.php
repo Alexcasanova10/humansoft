@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\modelEmpleados;
 use App\Models\modelAsistencias;
 use App\Models\modelPendientes;
+use App\Models\modelVacaciones;
+use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -29,7 +31,7 @@ class controllerDashboard extends Controller
         ]);    
     }
 
-    public function mostrarDashboard()
+   /*metodo anterior public function mostrarDashboard()
     {
         $conteoEmpleadosActivos = modelEmpleados::where('estado', 'activo')->count();
 
@@ -41,8 +43,37 @@ class controllerDashboard extends Controller
         $pendientes = modelPendientes::where('estado_task', 'pendiente')->get();
 
         return view('dashboard', compact('conteoEmpleadosActivos', 'asistenciaHoy', 'pendientes'));
+    }*/
+    public function mostrarDashboard()
+    {
+        $conteoEmpleadosActivos = modelEmpleados::where('estado', 'activo')->count();
+    
+        $hoy = Carbon::today();
+        $asistenciaHoy = modelAsistencias::where('estado_asistencia', 'asistencia')
+                                          ->whereDate('fecha', $hoy)
+                                          ->count();
+    
+        // Ajuste para la consulta de vacaciones activas
+        $conteoEmpleadosVacaciones = modelVacaciones::where('fecha_inicio', '<=', $hoy)
+                                                     ->where('fecha_fin', '>=', $hoy)
+                                                     ->count();
+    
+        $pendientes = modelPendientes::where('estado_task', 'pendiente')->get();
+    
+        // Obtener todos los eventos
+        $events = Event::all()->map(function($event) {
+            return [
+                'title' => $event->event,
+                'start' => $event->start_date,
+                'end' => $event->end_date
+            ];
+        });
+    
+        return view('dashboard', compact('conteoEmpleadosActivos', 'asistenciaHoy', 'conteoEmpleadosVacaciones', 'pendientes', 'events'));
     }
-
+    
+  
+    
     public function storePendiente(Request $request)
     {
         // Validar el request

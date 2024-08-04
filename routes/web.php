@@ -8,7 +8,10 @@ use App\Http\Controllers\controllerDashboard;
 use App\Http\Controllers\controllerPendientes;
 
 use App\Http\Controllers\controllerConfiguracion;
- use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\CalendarController;
+
+use App\Http\Controllers\controllerTemplate;
+
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +37,11 @@ Route::get('/dashboard', function () {
 Route::get('/empleados', function () {
     return view('views_paneles.empleados');
 })->name('empleados');
+
+
+Route::get('/calendarioIndex', function () {
+    return view('views_paneles.calendarioIndex');
+})->name('calendarioIndex');
 
 
 
@@ -107,6 +115,7 @@ Route::get('/vacaciones', function () {
     return view('views_paneles.vacaciones');
 })->name('vacaciones');
 
+ 
 
 
 Route::get('/vacaciones', [controllerVacaciones::class, 'index'])->name('vacaciones');
@@ -183,10 +192,16 @@ Route::post('/pendientes', [controllerDashboard::class, 'storePendiente'])->name
 Route::put('/pendientes/{id}', [controllerDashboard::class, 'updatePendiente'])->name('pendientes.update');
 Route::delete('/pendientes/{id}', [controllerDashboard::class, 'deletePendiente'])->name('pendientes.destroy');
 
+// Route::get('/template', [controllerDashboard::class, 'getEventData']);
 
- Route::get('calendar',[CalendarController::class,'index'])->name('calendar.indexado');
- Route::post('/calendar/store', [CalendarController::class, 'store'])->name('calendar.store');
 
- Route::post('/calendar/destroy', [CalendarController::class, 'destroy'])->name('calendar.destroy');
+Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
+Route::post('/calendar/store', [CalendarController::class, 'store'])->name('calendar.store');
+Route::post('/calendar/destroy', [CalendarController::class, 'destroy'])->name('calendar.destroy');
+
+
+ 
+
+
 
 require __DIR__.'/auth.php';

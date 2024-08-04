@@ -86,7 +86,7 @@
 
 								<a href="{{ route('empleado.editar', $empleado->id_empleado) }}" class="btn btn-info"  @if($empleado->estado == 'Inactivo') style="display: none;" @endif>Editar</a>
 
-								<form onsubmit="return confirm('¿Desea reactivar al empleado?')" action="{{ route('empleado.reactivarEmp', $empleado->id_empleado) }}" method="POST" style="display:inline;" @if($empleado->estado == 'Activo') style="display: none;" @endif>
+								<form                        action="{{ route('empleado.reactivarEmp', $empleado->id_empleado) }}" method="POST" style="display:inline;" @if($empleado->estado == 'Activo') style="display: none;" @endif>
                                         @csrf
                                         @method('PATCH')
                                         <button type="submit" class="btn btn-info"@if($empleado->estado == 'Activo') style="display: none;" @endif    >Reactivar</button>

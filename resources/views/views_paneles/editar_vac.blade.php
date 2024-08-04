@@ -23,6 +23,26 @@
                                     <label for="" class="text-center form-control text-white bg-primary rounded p-2 mb-4">Nombre del Empleado</label>
                                     <input type="text" readonly class="form-control" value="{{ $empleado->nombre }} {{ $empleado->apellido_pat }} {{ $empleado->apellido_mat }}">
                                 </div>
+
+                                <div class="mb-3 col text-center">
+                                    <label for="" class="text-center form-control text-white bg-primary rounded p-2 mb-4">Comentarios</label>
+                                    
+                                    <textarea class="form-control" class="form-control" value="{{ $empleado->comentarios }}" name="comentarios" id="" rows="3"></textarea>
+
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
                             </div>
                             <div class="row mt-4">
                                 <div class="mb-3 col text-center">

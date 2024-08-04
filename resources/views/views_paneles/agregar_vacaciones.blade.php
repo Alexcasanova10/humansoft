@@ -47,10 +47,10 @@
                               <label for="">Fecha de Fin</label>
                               <input type="date" class="form-control" id="fecha_fin" name="fecha_fin" required />
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" hidden>
                               <label for="">Número de Días Solicitados</label>
                               <input
-                                type="number"
+                                type="number" 
                                 class="form-control"
                                 id="dias_solicitados"
                                 name="dias_solicitados"

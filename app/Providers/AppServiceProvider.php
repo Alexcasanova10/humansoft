@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Event;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('template', function ($view) {
+            $eventCount = Event::count();
+            $events = Event::all();
+            $view->with(compact('eventCount', 'events'));
+        });
     }
 }
