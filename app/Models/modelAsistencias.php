@@ -9,9 +9,9 @@ class modelAsistencias extends Model
 {
     use HasFactory;
 
-    protected $table = 'model_asistencias'; // Nombre de la tabla en la base de datos
+    protected $table = 'model_asistencias';  
 
-    protected $primaryKey = 'id_empleado'; // Clave primaria de la tabla
+    protected $primaryKey = 'id_empleado';  
 
     protected $fillable = [
         'estado_asistencia', 'fecha', 'justificante', 'id_empleado', 'tipo_falta_justi', 'motivo_justi'

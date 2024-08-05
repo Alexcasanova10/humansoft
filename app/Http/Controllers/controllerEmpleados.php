@@ -108,7 +108,7 @@ class controllerEmpleados extends Controller
         $empleado->ciudad = $request->input('ciudad');
   
         $empleado->save();
-        return redirect('/');
+        return redirect()->route('empleados');
     }
 
 

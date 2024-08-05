@@ -14,36 +14,8 @@ class controllerDashboard extends Controller
 {
 
 
-    public function index()
-    {
-        // Obtener el valor del nombre del sitio
-        $nombreSitio = DB::table('configuracion')
-            ->where('key', 'nombre_sitio')
-            ->value('value'); // Obtener el valor de la columna 'value'
 
-        // Establecer un nombre predeterminado si no se encuentra ningún valor
-        $nombreSitio = $nombreSitio ?? 'Inicio Materiales El Inge';
-        Log::info('Nombre del sitio: ' . $nombreSitio); // Agrega esta línea para depurar
 
-        // Pasar el nombre del sitio a la vista
-        return view('dashboard', [
-            'nombreSitio' => $nombreSitio
-        ]);    
-    }
-
-   /*metodo anterior public function mostrarDashboard()
-    {
-        $conteoEmpleadosActivos = modelEmpleados::where('estado', 'activo')->count();
-
-        $hoy = Carbon::today()->toDateString();
-        $asistenciaHoy = modelAsistencias::where('estado_asistencia', 'asistencia')
-                                          ->whereDate('fecha', $hoy)
-                                          ->count();
-
-        $pendientes = modelPendientes::where('estado_task', 'pendiente')->get();
-
-        return view('dashboard', compact('conteoEmpleadosActivos', 'asistenciaHoy', 'pendientes'));
-    }*/
     public function mostrarDashboard()
     {
         $conteoEmpleadosActivos = modelEmpleados::where('estado', 'activo')->count();
@@ -53,14 +25,12 @@ class controllerDashboard extends Controller
                                           ->whereDate('fecha', $hoy)
                                           ->count();
     
-        // Ajuste para la consulta de vacaciones activas
         $conteoEmpleadosVacaciones = modelVacaciones::where('fecha_inicio', '<=', $hoy)
                                                      ->where('fecha_fin', '>=', $hoy)
                                                      ->count();
     
         $pendientes = modelPendientes::where('estado_task', 'pendiente')->get();
     
-        // Obtener todos los eventos
         $events = Event::all()->map(function($event) {
             return [
                 'title' => $event->event,
@@ -76,7 +46,7 @@ class controllerDashboard extends Controller
     
     public function storePendiente(Request $request)
     {
-        // Validar el request
+    
         $request->validate([
             'texto' => 'required|string|max:255',
         ]);

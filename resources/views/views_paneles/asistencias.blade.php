@@ -94,8 +94,7 @@
             let puesto = select.closest('tr').querySelector('td:nth-child(3)').textContent.trim();
             let fecha = document.getElementById('fecha').value;
 
-            // Redirigir a la vista de justificación con los parámetros
-            window.location.href = `/justi_Asista?id=${id}&nombre=${nombre}&puesto=${puesto}&fecha=${fecha}`;
+             window.location.href = `/justi_Asista?id=${id}&nombre=${nombre}&puesto=${puesto}&fecha=${fecha}`;
         } else {
             select.closest('tr').classList.remove('bg-warning');
         }

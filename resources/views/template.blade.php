@@ -37,6 +37,11 @@
 			border-left-color: #D94E41 !important;
 			color: #fff;
  		}
+		 .sidebar-item.active .sidebar-link {
+    background: linear-gradient(90deg, rgba(59, 125, 221, .1), rgba(59, 125, 221, .088) 50%, transparent);
+    border-left-color: #BF5A1F !important;
+    color: #fff;
+}
 
 		.sidebar-item.active .sidebar-link:hover, .sidebar-item.active>.sidebar-link {
 			background: linear-gradient(90deg, rgba(59, 125, 221, .1), rgba(59, 125, 221, .088) 50%, transparent);
@@ -60,14 +65,14 @@
                         Páginas
                     </li>
 
-                    <li class="sidebar-item active">
+                    <li class="sidebar-item {{ Route::is('dashboard') ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('dashboard') }}">
 							<!-- //antes ruta name era dashboard, si hay error, mover name a dashboard -->
 						<i class="fa-solid fa-house"></i><span class="align-middle">Inicio</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item {{ Route::is('empleados') ? 'active' : '' }}">
                         <a class="sidebar-link"  href="{{ route('empleados') }}">
 							<i class="fa-solid fa-user"></i> <span class="align-middle">Empleado</span>
                     	</a>
@@ -78,26 +83,26 @@
                     </li>
 
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item {{ Route::is('asistencias') ? 'active' : '' }}">
                         <a class="sidebar-link"  href="{{ route('asistencias') }}">
  						<i class="fa-solid fa-users"></i>
 						<span class="align-middle">Asistencias</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item {{ Route::is('vacaciones') ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('vacaciones') }}">
 						<i class="fa-solid fa-plane"></i><span class="align-middle">Vacaciones</span>
                         </a>
                     </li>
-                    <li class="sidebar-item">
+                    <li class="sidebar-item {{ Route::is('nominas') ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('nominas') }}">
 						<i class="fa-solid fa-money-bill"></i> <span class="align-middle">Nóminas</span>
                         </a>
                     </li>
                
 
-					<li class="sidebar-item">
+					<li class="sidebar-item {{ Route::is('calendar.index') ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('calendar.index') }}">
 						<i class="fa-solid fa-money-bill"></i> <span class="align-middle">Calendario</span>
                         </a>
@@ -111,14 +116,14 @@
                     <li class="sidebar-header">
                      </li>
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item {{ Route::is('configuracion') ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('configuracion') }}">
                         <i class="fa-solid fa-gear"></i> <span class="align-middle">Configuración</span>
                         </a>
                     </li>
 
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item {{ Route::is('profile.edit') ? 'active' : '' }}">
                         <a class="sidebar-link" href="{{ route('profile.edit') }}">
                         <i class="fa-solid fa-address-card"></i> <span class="align-middle">Perfil</span>
                         </a>
@@ -170,7 +175,7 @@
                                     @endforeach
                                     </div>
                                     <div class="dropdown-menu-footer">
-                                        <a href="#" class="text-muted">Show all notifications</a>
+                                        <a href="#" class="text-muted">Ver Todo</a>
                                     </div>
                                 </div>
                             </li>
@@ -216,76 +221,7 @@
 
     <script src="{{asset('assets/js/app.js')}}"></script>
 
-	<!-- <script>
-		document.addEventListener("DOMContentLoaded", function() {
-			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: "line",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: gradient,
-						borderColor: window.theme.primary,
-						data: [
-							2115,
-							1562,
-							1584,
-							1892,
-							1587,
-							1923,
-							2566,
-							2448,
-							2805,
-							3438,
-							2917,
-							3327
-						]
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 1000
-							},
-							display: true,
-							borderDash: [3, 3],
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script> -->
+	 
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			// Pie chart

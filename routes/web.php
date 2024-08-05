@@ -31,8 +31,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('inicio');
 
 
-    //antes ruta name era dashboard, si hay error, mover name a dashboard
-
+ 
 
 Route::get('/empleados', function () {
     return view('views_paneles.empleados');
@@ -165,11 +164,7 @@ Route::get('/perfil', function () {
 Route::get('/errorPNT', function () {
     return view('views_paneles.errorPNT');
 })->name('errorPNT');
-
-
-/*Route::get('/dashboard', [ControllerEmpleados::class, 'contarEmpleadosActivos'])->name('dashboard');
-Route::get('/dashboard', [controllerAsistencias::class, 'contarAsistencia'])->name('dashboard');*/
-
+ 
 Route::get('/dashboard', [controllerDashboard::class, 'mostrarDashboard'])->name('dashboard');
 
 
@@ -192,8 +187,7 @@ Route::post('/pendientes', [controllerDashboard::class, 'storePendiente'])->name
 Route::put('/pendientes/{id}', [controllerDashboard::class, 'updatePendiente'])->name('pendientes.update');
 Route::delete('/pendientes/{id}', [controllerDashboard::class, 'deletePendiente'])->name('pendientes.destroy');
 
-// Route::get('/template', [controllerDashboard::class, 'getEventData']);
-
+ 
 
 Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
 Route::post('/calendar/store', [CalendarController::class, 'store'])->name('calendar.store');

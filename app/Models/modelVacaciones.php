@@ -9,12 +9,11 @@ class modelVacaciones extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_vacaciones'; // Clave primaria de la tabla
+    protected $primaryKey = 'id_vacaciones';  
 
     protected $fillable = ['fecha_inicio', 'fecha_fin', 'dias_solicitados', 'comentarios', 'fecha_Aprobacion', 'id_empleado'];
 
-    // Define el campo de fecha como un objeto Carbon
-    protected $dates = ['fecha_inicio', 'fecha_fin', 'fecha_Aprobacion'];
+     protected $dates = ['fecha_inicio', 'fecha_fin', 'fecha_Aprobacion'];
 
     public function empleado()
     {

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('model_vacaciones', function (Blueprint $table) {
-            $table->timestamps(); // Agrega created_at y updated_at
+            $table->timestamps(); 
 
         });
     }
@@ -27,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('model_vacaciones', function (Blueprint $table) {
-            $table->dropTimestamps(); // Elimina created_at y updated_at
+            $table->dropTimestamps();  
         });
     }
 };

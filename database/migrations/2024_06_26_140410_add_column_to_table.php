@@ -25,8 +25,7 @@ return new class extends Migration
             $table->string('colonia');
             $table->string('codigo_postal');
             $table->string('ciudad');
-            $table->date('fecha_baja')->nullable();; //   `fecha_baja` date DEFAULT NULL, // solo se pone si el empleado esta inactivo y agarra la fecha del momento que se pone inactivo
-
+            $table->date('fecha_baja')->nullable();  
         });
     }
 

@@ -136,7 +136,7 @@ Bienvenido!!
                         </div>
                         <div class="col-4 d-flex justify-content-center align-items-center bg-warning position-relative">
                             <div class="text-center">
-                            <h1 class="light text-white">Vacaciones <span class="number">{{ $conteoEmpleadosVacaciones }}</span></h1>
+                            <h1 class="light text-white">Vacaciones: <span class="number">{{ $conteoEmpleadosVacaciones }}</span></h1>
 
 
                                 <div class="info-box d-flex align-items-center justify-content-center mt-2">

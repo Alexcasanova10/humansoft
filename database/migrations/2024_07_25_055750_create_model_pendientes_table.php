@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('model_pendientes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('texto'); //texto del bloque de tarea
-            $table->string('estado_task'); //estado: ya sea completado o pendiente
+            $table->string('texto'); 
+            $table->string('estado_task'); 
         
         });
     }

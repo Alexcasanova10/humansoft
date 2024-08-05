@@ -21,8 +21,7 @@ return new class extends Migration
             $table->string('comentarios');
             $table->date('fecha_Aprobacion');
             
-         // Clave foránea para id_empleado
-         $table->unsignedBigInteger('id_empleado');
+          $table->unsignedBigInteger('id_empleado');
          $table->foreign('id_empleado')
                ->references('id_empleado')
                ->on('model_empleados')

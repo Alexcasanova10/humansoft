@@ -28,31 +28,6 @@ class controllerConfiguracion extends Controller
     }
 
 
-    public function actualizarNombre(Request $request)
-    {
-      // Validar la solicitud
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-        ]);
-
-        // Actualizar el nombre del sitio en la base de datos
-        DB::table('configuracion')->where('key', 'nombre_sitio')->update([
-            'value' => $request->input('nombre'),
-        ]);
-
-        return redirect()->route('configuracion.index')->with('success', 'Configuración actualizada.');
-    }
-
-
-    public function mostrar()
-    {
-        // Obtener la configuración actual
-        $configuracion = DB::table('configuracion')->where('key', 'nombre_sitio')->first();
-
-        return view('configuracion', ['configuracion' => $configuracion]);
-    }
-
-
 
 
 

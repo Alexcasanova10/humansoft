@@ -59,13 +59,6 @@ class controllerNominas extends Controller
 
         $empleado = modelEmpleados::find($request->id_empleado);
         $pdf = PDF::loadView('pdf.nomina', compact('empleado', 'nomina'));
-
-        // Enviar correo electrónico con el PDF adjunto, literal esta linea es la q me dja mandar mail
-       /* Mail::to($request->correo)->send(new nominaCreado($empleado, $pdf->output()));*/
-
-
-
-
         return $pdf->download('nomina.pdf');
      }
 

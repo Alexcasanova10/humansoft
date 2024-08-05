@@ -26,12 +26,11 @@ return new class extends Migration
             $table->decimal('deducciones', 8, 2)->nullable();
             $table->string('concepto_bono');
             $table->decimal('bonos', 8, 2)->nullable();
-            $table->string('estado_nomina')->default('pendiente');  // Valor predeterminado
+            $table->string('estado_nomina')->default('pendiente');   
             $table->timestamps();
 
  
-         // Clave foránea para id_empleado
-         $table->unsignedBigInteger('id_empleado');
+        $table->unsignedBigInteger('id_empleado');
          $table->foreign('id_empleado')
                ->references('id_empleado')
                ->on('model_empleados')

@@ -19,8 +19,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->string('justificante')->nullable(); 
         
-            // Clave foránea para id_empleado
-            $table->unsignedBigInteger('id_empleado');
+             $table->unsignedBigInteger('id_empleado');
             $table->foreign('id_empleado')
                   ->references('id_empleado')
                   ->on('model_empleados')

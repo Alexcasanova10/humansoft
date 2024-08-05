@@ -10,10 +10,9 @@ class controllerVacaciones extends Controller
 {
     public function index()
     {
-        // Obtener el año actual
         $currentYear = date('Y');
 
-        // Obtener las vacaciones activas en el año actual
+
         $vacaciones = modelVacaciones::whereYear('fecha_inicio', $currentYear)
             ->orWhereYear('fecha_fin', $currentYear)
             ->with('empleado')
@@ -83,14 +82,13 @@ class controllerVacaciones extends Controller
     {
         // Obtener la información de la vacación
         $vacacion = modelVacaciones::findOrFail($id_vacaciones);
-        $empleado = $vacacion->empleado; // Relación con el empleado
+        $empleado = $vacacion->empleado; 
 
         return view('views_paneles.editar_vac', compact('vacacion', 'empleado'));
     }
 
     public function update(Request $request, $id_vacaciones)
     {
-        // Validar la solicitud
         $request->validate([
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date',
@@ -98,7 +96,7 @@ class controllerVacaciones extends Controller
             'comentarios' => 'nullable|string',
         ]);
     
-        // Obtener la vacación para actualizar
+        
         $vacacion = modelVacaciones::findOrFail($id_vacaciones);
     
         // Actualizar los campos
@@ -108,19 +106,19 @@ class controllerVacaciones extends Controller
         $vacacion->comentarios = $request->input('comentarios');
         $vacacion->save();
     
-        // Redirigir con un mensaje de éxito
+        
         return redirect()->route('vacaciones')->with('success', 'Vacación actualizada exitosamente.');
     }
 
     public function destroy($id_vacaciones)
     {
-        // Buscar el registro de vacaciones por ID
+        
         $vacacion = modelVacaciones::findOrFail($id_vacaciones);
     
-        // Eliminar el registro
+        
         $vacacion->delete();
     
-        // Redirigir con un mensaje de éxito
+    
         return redirect()->route('vacaciones')->with('success', 'Vacación eliminada exitosamente.');
     }
 
