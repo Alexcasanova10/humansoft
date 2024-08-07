@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class controllerDashboard extends Controller
 {
-
+ 
 
 
 
@@ -38,8 +38,9 @@ class controllerDashboard extends Controller
                 'end' => $event->end_date
             ];
         });
-    
-        return view('dashboard', compact('conteoEmpleadosActivos', 'asistenciaHoy', 'conteoEmpleadosVacaciones', 'pendientes', 'events'));
+        $nombre_sitio = DB::table('configuracion')->where('key', 'nombre_sitio')->first()->value ?? 'Materiales el Inge';
+
+        return view('dashboard', compact('conteoEmpleadosActivos', 'asistenciaHoy', 'conteoEmpleadosVacaciones', 'pendientes', 'events','nombre_sitio'));
     }
     
   

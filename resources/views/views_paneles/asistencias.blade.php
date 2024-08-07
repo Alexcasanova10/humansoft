@@ -54,10 +54,18 @@
                                                         $asistencia = $asistencias[$empleado->id_empleado]->estado_asistencia ?? '';
                                                         $highlight = $asistencia == 'Justificación' ? 'bg-warning' : '';
                                                         $estado_asistencia = $asistencia == 'Justificación' ? 'Pendiente Justificante' : $asistencia;
+
+                                                        $enVacaciones = $vacaciones->has($empleado->id_empleado);
+
                                                     @endphp
                                                     <tr class="{{ $highlight }}">
                                                         <td>{{ $empleado->id_empleado }}</td>
-                                                        <td>{{ $empleado->nombre . ' ' . $empleado->apellido_pat }}</td>
+                                                        <td>
+                                                            {{ $empleado->nombre . ' ' . $empleado->apellido_pat }}
+                                                            @if($enVacaciones)
+                                                                <span class="badge bg-danger text-white">En periodo vacacional</span>
+                                                            @endif
+                                                        </td>
                                                         <td>{{ $empleado->puesto }}</td>
                                                         <td>
                                                             <select name="asistencia[{{ $empleado->id_empleado }}]" class="form-select" onchange="handleJustification(this, '{{ $empleado->id_empleado }}')">

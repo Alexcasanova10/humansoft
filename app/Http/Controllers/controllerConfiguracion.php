@@ -7,8 +7,19 @@ use Illuminate\Http\Request;
  use Illuminate\Support\Facades\DB;
 
 
+
 class controllerConfiguracion extends Controller
 {
+
+
+    public function index()
+    {
+        $configuracion = DB::table('configuracion')->get();
+        return view('configuracion', compact('configuracion'));
+    }
+
+
+
     public function actualizar(Request $request)
     {
         $request->validate([
@@ -27,7 +38,19 @@ class controllerConfiguracion extends Controller
         return back()->with('error', 'Por favor, seleccione un archivo válido.');
     }
 
+    public function actualizarNombre(Request $request)
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+        ]);
 
+        DB::table('configuracion')->updateOrInsert(
+            ['key' => 'nombre_sitio'],
+            ['value' => $request->nombre]
+        );
+
+        return back()->with('success', 'Nombre del sitio actualizado correctamente.');
+    }
 
 
 

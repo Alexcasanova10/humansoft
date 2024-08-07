@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\modelAsistencias;
+use App\Models\modelVacaciones;
 use App\Models\modelEmpleados;
 use Carbon\Carbon;
 
@@ -20,7 +21,14 @@ class controllerAsistencias extends Controller
         $empleados = modelEmpleados::where('estado', 'activo')->get();
         $asistencias = modelAsistencias::where('fecha', $fecha)->get()->keyBy('id_empleado');
 
-        return view('views_paneles.asistencias', compact('empleados', 'asistencias', 'fecha'));
+
+        $vacaciones = modelVacaciones::where('fecha_inicio', '<=', $fecha)
+            ->where('fecha_fin', '>=', $fecha)
+            ->get()
+            ->keyBy('id_empleado');
+
+
+        return view('views_paneles.asistencias', compact('empleados', 'asistencias', 'fecha','vacaciones'));
     }
 
     public function storeAsistencias(Request $request)

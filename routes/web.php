@@ -133,10 +133,26 @@ Route::delete('/vacaciones/{id_vacaciones}', [controllerVacaciones::class, 'dest
 Route::get('/dashboard', [controllerDashboard::class, 'index'])->name('dashboard');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::post('/configuracion/actualizar', [controllerConfiguracion::class, 'actualizar'])->name('configuracion.actualizar');
 
-Route::post('/configuracion/actualizarNombre', [controllerConfiguracion::class, 'actualizarNombre'])->name('configuracion.actualizarNombre');
+Route::get('/configuracion', [controllerConfiguracion::class, 'index'])->name('configuracion.index');
+Route::post('/configuracion/actualizar-nombre', [controllerConfiguracion::class, 'actualizarNombre'])->name('configuracion.actualizarNombre');
 
+ 
 
 
 Route::get('/configuracion/mostrar', [controllerConfiguracion::class, 'mostrar'])->name('configuracion.index');

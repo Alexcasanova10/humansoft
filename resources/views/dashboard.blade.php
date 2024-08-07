@@ -1,8 +1,11 @@
 @extends('template')
-<!-- <title>Inicio Materiales El Inge</title> -->
 
-<title>Materiales el Inge</title>
- 
+<!-- este es el titlo que quiero cambiar -->
+<title>{{ $nombre_sitio }}</title> 
+@section('titulo')
+    Bienvenidos a Materiales el Inge
+@endsection
+
 @section('contenido_gral')
 <style>
     .check {
