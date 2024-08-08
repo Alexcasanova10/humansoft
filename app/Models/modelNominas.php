@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class modelNominas extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id_nomina'; // Cambia esto al nombre de tu clave primaria
 
     protected $fillable = [
         'id_empleado',

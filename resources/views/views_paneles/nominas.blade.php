@@ -26,6 +26,9 @@
                             <div class="task-hold input-group">
                                 <button type="submit" class="btn btn-primary">Agregar Nómina</button>
                             </div>
+                            <div class="input-group">
+                                <a class="btn btn-danger"  href="{{ route('lista_nominas') }}">Ver listado de nóminas</a>
+                            </div>
                         </form>
                     </div>
                 </div>

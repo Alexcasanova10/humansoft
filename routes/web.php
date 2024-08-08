@@ -97,11 +97,18 @@ Route::get('/nominas', function () {
     return view('views_paneles.nominas');
 })->name('nominas');
  
+
+Route::get('/lista_nominas', function () {
+    return view('views_paneles.lista_nominas');
+})->name('lista_nominas');
+ 
  
 Route::get('/nominas', [controllerNominas::class, 'index'])->name('nominas');
 Route::post('/guardar_nomina', [controllerNominas::class, 'guardar'])->name('guardar_nomina');
 
+Route::get('/lista_nominas', [controllerNominas::class, 'indexListadoNominas'])->name('lista_nominas');
 
+Route::get('lista_nominas/{empleadoId}', [controllerNominas::class, 'verListadoNominas']);
 
  
 
