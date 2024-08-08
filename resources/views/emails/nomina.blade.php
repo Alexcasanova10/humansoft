@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Nómina de Empleado</title>
+    <title>Nómina Generada</title>
 </head>
 <body>
-    <h1>Nómina de Empleado</h1>
     <p>Estimado(a) {{ $empleado->nombre }},</p>
-    <p>Adjunto a este correo encontrarás el PDF con los detalles de tu nómina.</p>
+    <p>Adjunto a este correo encontrará su nómina generada.</p>
+    <p>Saludos,</p>
+    <p>Materiales el Inge  S.A DE C .V </p>
 </body>
 </html>

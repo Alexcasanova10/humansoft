@@ -25,7 +25,7 @@
         <div class="row text-center d-flex align-items-center justify-content-center align-items-center">
             <div class="col-md-6">
                 <div class="card p-4">
-                <x-auth-session-status class="mb-4" :status="session('status')" />
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
 
                     <form method="POST"  action="{{ route('password.email') }}">
                         @csrf
@@ -41,6 +41,7 @@
                             
  
  
+                            <!-- <input id="email" type="email" class="form-control" value="email" name="email" > -->
 
                             <x-text-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="username" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -57,16 +58,12 @@
                      
 
                     </form>
+                
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
 </body>
 </html>
 

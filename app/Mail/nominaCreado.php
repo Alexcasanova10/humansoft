@@ -35,8 +35,9 @@ class nominaCreado extends Mailable
     {
         return $this->view('emails.nomina')
         ->subject('Nómina de Empleado')
-        ->attachData($this->pdf, 'nomina.pdf', [
+        ->attachData($this->pdf->output(), 'nomina.pdf', [
             'mime' => 'application/pdf',
-        ]);
+        ])
+        ->with('empleado', $this->empleado);
     }
 }

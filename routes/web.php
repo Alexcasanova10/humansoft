@@ -11,12 +11,15 @@ use App\Http\Controllers\controllerConfiguracion;
 use App\Http\Controllers\CalendarController;
 
 use App\Http\Controllers\controllerTemplate;
+use App\Http\Controllers\TestMailController;
 
+use App\Http\Controllers\Auth\NewPasswordController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
- 
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+
 
 Route::get('/',function(){
     return view('auth.login');
@@ -196,6 +199,21 @@ Route::middleware('auth')->group(function () {
 
 
 
+ 
+
+
+Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+
+
+
+
+
+
+
+
 
 
 Route::get('/dashboard', [controllerDashboard::class, 'mostrarDashboard'])->name('dashboard');
@@ -211,6 +229,8 @@ Route::post('/calendar/destroy', [CalendarController::class, 'destroy'])->name('
 
 
  
+ 
+Route::get('/send-test-mail', [TestMailController::class, 'sendTestMail']);
 
 
 
